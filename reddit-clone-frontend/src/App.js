@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js (or main routing component)
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Home from './components/home'; // Import your existing components
+import Login from './components/login'; // Import your new Login component
+
+const App = () => {
+    return (
+        <Router>
+            <div>
+                {/* Your header/nav bar here */}
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/login">Login</a></li>
+                        {/* Other navigation links */}
+                    </ul>
+                </nav>
+                {/* Define routes */}
+                <Routes>
+                    <Route exact path="/" element={<Home/>} />
+                    <Route exact path="/login" element={<Login/>} />
+                    {/* Other routes */}
+                </Routes>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
